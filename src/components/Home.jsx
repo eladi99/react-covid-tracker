@@ -10,13 +10,25 @@ const GLOBAL = 'Global';
 export default function Home() {
   const [selectedCountry, setSelectedCountry] = useState(GLOBAL);
 
-  // TODO: get error and show
-  const { loading, data } = useCovidData();
+  const { loading, error, data } = useCovidData();
 
   function countryChanged(countryID) {
     const country = data.Countries.find((c) => c.ID === countryID);
     console.log('Selected country', country?.Country || GLOBAL);
     setSelectedCountry(country?.Country || GLOBAL);
+  }
+
+  if (error) {
+    return (
+      <main>
+        <div className="bg-red-500 rounded text-white text-center shadow-md m-10 py-6">
+          <p className="text-3xl md:text-4xl font-bold">
+            Failed to retrieve data from API
+          </p>
+          <p className="text-xl mt-3">Please try again later.</p>
+        </div>
+      </main>
+    );
   }
 
   return loading ? (
