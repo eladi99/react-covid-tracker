@@ -21,7 +21,7 @@ export default function Home() {
 
   return loading ? (
     <main className="flex flex-col align-center justify-center text-center">
-      <div className="text-gray-500 text-3xl-mt-10-mb-6">Fetching data</div>
+      <div className="text-gray-500 text-3xl mt-10 mb-6">Fetching data</div>
       <img src={hourglass} alt="Loading..." className="w-24 m-auto" />
     </main>
   ) : (
