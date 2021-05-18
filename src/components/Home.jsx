@@ -11,10 +11,11 @@ const GLOBAL = 'Global';
 export default function Home() {
   const [selectedCountry, setSelectedCountry] = useState(GLOBAL);
 
-  const { loading, error, data } = useCovidData();
+  const { loading, error, dataDate, globalData, countriesData } =
+    useCovidData();
 
   function countryChanged(countryID) {
-    const country = data.Countries.find((c) => c.ID === countryID);
+    const country = countriesData.find((c) => c.ID === countryID);
     console.log('Selected country', country?.Country || GLOBAL);
     setSelectedCountry(country?.Country || GLOBAL);
   }
@@ -28,17 +29,17 @@ export default function Home() {
     </main>
   ) : (
     <main>
-      <DataTitle dataDate={data.Date} text={selectedCountry} />
+      <DataTitle dataDate={dataDate} text={selectedCountry} />
       <DataBoxes
         stats={
           selectedCountry === GLOBAL
-            ? data.Global
-            : data.Countries.find((c) => c.Country === selectedCountry)
+            ? globalData
+            : countriesData.find((c) => c.Country === selectedCountry)
         }
       />
 
       <CountrySelect
-        countries={data.Countries}
+        countries={countriesData}
         handleCountryChanged={countryChanged}
       />
 

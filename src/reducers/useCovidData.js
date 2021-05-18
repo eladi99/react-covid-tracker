@@ -8,8 +8,10 @@ const ACTIONS = {
 };
 
 const REDUCER_INITIAL_STATE = {
+  dataDate: '',
+  globalData: {},
+  countriesData: [],
   loading: true,
-  data: {},
   error: '',
 };
 
@@ -20,7 +22,9 @@ function reducer(state, action) {
     case ACTIONS.GET_DATA:
       const { data } = action.payload;
       return {
-        data,
+        dataDate: data.Date,
+        globalData: data.Global,
+        countriesData: data.Countries,
         loading: false,
         error: '',
       };
