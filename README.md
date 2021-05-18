@@ -1,7 +1,7 @@
 # React Covid-19 tracker
 
 This project is an extended clone of a
-[similar dashboard by Bard Traversy](https://github.com/bradtraversy/vue-covid-tracker), implemented in Vue.
+[similar dashboard by Brad Traversy](https://github.com/bradtraversy/vue-covid-tracker), implemented in Vue.
 
 The web app presents world-wide confirmed cases and deaths of Covid-19.
 Data is fetched from [covid19api.com](https://covid19api.com).
