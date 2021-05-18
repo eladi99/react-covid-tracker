@@ -4,6 +4,7 @@ import useCovidData from '../reducers/useCovidData';
 import CountrySelect from './CountrySelect';
 import DataBoxes from './DataBoxes';
 import DataTitle from './DataTitle';
+import Error from './Error';
 
 const GLOBAL = 'Global';
 
@@ -18,18 +19,7 @@ export default function Home() {
     setSelectedCountry(country?.Country || GLOBAL);
   }
 
-  if (error) {
-    return (
-      <main>
-        <div className="bg-red-500 rounded text-white text-center shadow-md m-10 py-6">
-          <p className="text-3xl md:text-4xl font-bold">
-            Failed to retrieve data from API
-          </p>
-          <p className="text-xl mt-3">Please try again later.</p>
-        </div>
-      </main>
-    );
-  }
+  if (error) return <Error />;
 
   return loading ? (
     <main className="flex flex-col align-center justify-center text-center">
